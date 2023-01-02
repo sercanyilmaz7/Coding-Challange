@@ -230,4 +230,55 @@
 //  str1 = n.toString();
 //  str = str1.split("");
 
-//  console.log(str);
+///*****************************************************************
+
+
+
+
+// function addBinary(a, b) {
+//   var sum = a + b,
+//     binary = "";
+
+//   while (sum > 0) {
+//     binary = (sum % 2) + binary;
+//     sum = Math.floor(sum / 2);
+//   }
+
+//   return binary;
+// }
+// console.log(addBinary(100,0));
+
+
+//? 2nci Yöntem
+
+// function addBinary(a, b) {
+//   return (a + b).toString(2);
+// }
+// console.log(addBinary(100, 0));
+
+///*****************************************************************
+
+// This time no story, no theory. The examples below show you how to write function accum:
+
+// Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
+
+// function accum(s){
+//   const result =[]
+//   const lowerStr = s.toLowerCase()
+//   for(let i =0;i<lowerStr.length;i++){
+//     str=lowerStr[i].toUpperCase();
+//     for(let j=0;j<i;j++){
+//       str+=lowerStr[i];
+//     }
+//     result.push(str);
+//   }
+//   return result.join("-")
+// }
+// console.log(accum("abcd"));
+
+
+///*****************************************************************
