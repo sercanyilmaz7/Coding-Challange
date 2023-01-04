@@ -189,8 +189,6 @@
 
 // Input: 123456789 Output: 987654321
 
-
-
 // function descendingOrder(n) {
 //   str1 = n.toString();
 //   str = str1.split("");
@@ -210,11 +208,9 @@
 
 //?diğer yöntem
 
-
 // function descendingOrder(n) {
 //   return parseInt(String(n).split("").sort().reverse().join(""));
 // }
-
 
 // console.log(descendingOrder(4681436));
 
@@ -225,15 +221,11 @@
 // n=parseInt(s)
 // console.log(n);
 
-
 // let n = 12345
 //  str1 = n.toString();
 //  str = str1.split("");
 
 ///*****************************************************************
-
-
-
 
 // function addBinary(a, b) {
 //   var sum = a + b,
@@ -247,7 +239,6 @@
 //   return binary;
 // }
 // console.log(addBinary(100,0));
-
 
 //? 2nci Yöntem
 
@@ -280,5 +271,205 @@
 // }
 // console.log(accum("abcd"));
 
+///*****************************************************************
+
+// Task:
+// Given a list of integers, determine whether the sum of its elements is odd or even.
+
+// Give your answer as a string matching "odd" or "even".
+
+// If the input array is empty consider it as: [0] (array with a zero).
+
+// function oddOrEven(array) {
+//   sum = 0;
+//   for (let i = 0; i < array.length; i++) {
+//     sum += array[i];
+//   }
+//   sum1 = Math.abs(sum);
+//   if (array == [0] || array == []) {
+//     return console.log("even");
+//   } else if (sum1 % 2 === 0) {
+//     return console.log("even");
+//   } else if (sum1 % 2 !== 0) {
+//     return console.log("odd");
+//   }
+//   return sum;
+// }
+
+// oddOrEven([1,2]);
+
+// console.log(sum);
 
 ///*****************************************************************
+
+// let a = "is2 Thi1s T4est 3a";
+// b = a.split(" ")
+// console.log(b);
+// c = b[1]
+// console.log(c);
+
+// const numbers = ["is2", "Thi1s", "T4est", "3a"];
+
+// console.log(numbers[0].includes(2)) // true
+// console.log(numbers.includes(0)) // false
+// console.log(numbers.includes(1)) // true
+// console.log(numbers.includes(6)) // false
+
+// function order(words) {
+//   arr = words.split(" ")
+//   for(let i=0;i<arr.length-1;i++){
+
+//     for(let j=1;j<arr.length;j++)
+//     if(arr[i].includes[j]){
+
+//     }
+
+//   }
+// }
+
+///*****************************************************************
+
+// Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+
+// For example,
+
+// [true,  true,  true,  false,
+//   true,  true,  true,  true ,
+//   true,  false, true,  false,
+//   true,  false, false, true ,
+//   true,  true,  true,  true ,
+//   false, false, true,  true]
+// The correct answer would be 17.
+
+// Hint: Don't forget to check for bad values like null/undefined
+
+// let sheeps = [
+//   true,
+//   true,
+//   true,
+//   false,
+//   true,
+//   true,
+//   true,
+//   true,
+//   true,
+//   false,
+//   true,
+//   false,
+//   true,
+//   false,
+//   false,
+//   true,
+//   true,
+//   true,
+//   true,
+//   true,
+//   false,
+//   false,
+//   true,
+//   true,
+// ];
+
+// console.log(sheeps[0]);
+
+// let counter = 0;
+// const sheep = function (sheeps) {
+//   for (let i = 0; i < sheeps.length; i++) {
+//     if(sheeps[i] == true){
+//       counter++
+//     }
+//   }
+//   return counter
+// };
+//  console.log(sheep(sheeps));
+
+ ///*****************************************************************
+// Senior Level 
+// ----------------------------------------------------
+// Find the closest palindrome number for your code:
+
+// Example:
+// Input: 216
+// Output: 212
+
+// Input: 100
+// Output: 99
+
+// Input: 77
+// Output: 77
+
+// NOTE: 
+// - palindrome number is number is same from left - right side
+// - If the number itself is a palindrome, return that number.
+// - If two palindrome numbers distance is same choose smaller number.
+
+
+
+ const reservednum = (num) => {
+    const x = Number((num.toString().split("").reverse().join("")));
+    return x;
+ }
+//  console.log(reservednum(123));
+
+const findPalindrome = (num) =>{
+    let bignum=num
+    let smallnum=num
+    let a=0
+    let b=0
+    if(num == reservednum(num)){
+        return num
+    }else{
+        while(smallnum !== reservednum(smallnum)){
+            smallnum--;
+            a++;
+        }
+
+         while (bignum !== reservednum(bignum)) {
+           bignum++;
+           b++;
+         }
+    }
+
+    if(a<=b){ return smallnum}
+    else if(a>b){ return bignum}
+}
+
+console.log(findPalindrome(158));//161
+console.log(findPalindrome(121));//121
+console.log(findPalindrome(302));//303
+console.log(findPalindrome(10));//9
+console.log(findPalindrome(1356));//1331
+
+ ///*****************************************************************
+
+//  Create a function that accepts 2 string arguments and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+// If no occurrences can be found, a count of 0 should be returned.
+// ("Hello", "o")  ==>  1
+// ("Hello", "l")  ==>  2
+// ("", "z")       ==>  0
+// Notes:
+// The first argument can be an empty string
+// The second string argument will always be of length 1
+
+function find(name, item) {
+  let counter = 0;
+  for (let i of name) {
+    i === item && counter++;
+  }
+  return counter;
+}
+console.log(find("Hello", "o"));
+console.log(find("Hello", "l"));
+
+function find(name, item) {
+  let counter = 0;
+  for (let i in name) {
+    name[i] === item || counter++;
+  }
+  return name.length - counter;
+}
+console.log(find("Hello", "o"));
+console.log(find("Hello", "l"));
+
+
+ ///*****************************************************************
