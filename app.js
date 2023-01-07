@@ -383,8 +383,8 @@
 // };
 //  console.log(sheep(sheeps));
 
- ///*****************************************************************
-// Senior Level 
+///*****************************************************************
+// Senior Level
 // ----------------------------------------------------
 // Find the closest palindrome number for your code:
 
@@ -398,49 +398,50 @@
 // Input: 77
 // Output: 77
 
-// NOTE: 
+// NOTE:
 // - palindrome number is number is same from left - right side
 // - If the number itself is a palindrome, return that number.
 // - If two palindrome numbers distance is same choose smaller number.
 
-
-
- const reservednum = (num) => {
-    const x = Number((num.toString().split("").reverse().join("")));
-    return x;
- }
+const reservednum = (num) => {
+  const x = Number(num.toString().split("").reverse().join(""));
+  return x;
+};
 //  console.log(reservednum(123));
 
-const findPalindrome = (num) =>{
-    let bignum=num
-    let smallnum=num
-    let a=0
-    let b=0
-    if(num == reservednum(num)){
-        return num
-    }else{
-        while(smallnum !== reservednum(smallnum)){
-            smallnum--;
-            a++;
-        }
-
-         while (bignum !== reservednum(bignum)) {
-           bignum++;
-           b++;
-         }
+const findPalindrome = (num) => {
+  let bignum = num;
+  let smallnum = num;
+  let a = 0;
+  let b = 0;
+  if (num == reservednum(num)) {
+    return num;
+  } else {
+    while (smallnum !== reservednum(smallnum)) {
+      smallnum--;
+      a++;
     }
 
-    if(a<=b){ return smallnum}
-    else if(a>b){ return bignum}
-}
+    while (bignum !== reservednum(bignum)) {
+      bignum++;
+      b++;
+    }
+  }
 
-console.log(findPalindrome(158));//161
-console.log(findPalindrome(121));//121
-console.log(findPalindrome(302));//303
-console.log(findPalindrome(10));//9
-console.log(findPalindrome(1356));//1331
+  if (a <= b) {
+    return smallnum;
+  } else if (a > b) {
+    return bignum;
+  }
+};
 
- ///*****************************************************************
+console.log(findPalindrome(158)); //161
+console.log(findPalindrome(121)); //121
+console.log(findPalindrome(302)); //303
+console.log(findPalindrome(10)); //9
+console.log(findPalindrome(1356)); //1331
+
+///*****************************************************************
 
 //  Create a function that accepts 2 string arguments and returns an integer of the count of occurrences the 2nd argument is found in the first one.
 // If no occurrences can be found, a count of 0 should be returned.
@@ -471,5 +472,70 @@ function find(name, item) {
 console.log(find("Hello", "o"));
 console.log(find("Hello", "l"));
 
+///*****************************************************************
 
- ///*****************************************************************
+let companiesString = "hello";
+const companies = companiesString.split("l");
+
+console.log(companies);
+
+///*****************************************************************
+
+//    An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia).
+
+//  Note: anagrams are case insensitive
+
+//  Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+
+//  isAnagram("foefet", "toffee") => output: true, 'The word "foefet" is an anagram of "toffee"'
+//  isAnagram("Buckethead", "DeathCubeK") => output: true, 'The word "Buckethead" is an anagram of "DeathCubeK"'
+//  isAnagram("Twoo", "WooT") => output: true, 'The word "Twoo" is an anagram of "WooT"'
+
+//  isAnagram("dumble", "bumble") => output: false, 'Characters do not match for test case "dumble", "bumble"'
+//  isAnagram("ound", "round") => output: false, 'Missing characters for test case "ound", "round"'
+//  isAnagram("apple", "pale") => output: false, 'Same letters, but different count'
+
+// const isAnagram = (test, original) => {
+//   return (
+//     test.toLowerCase().split("").sort().join("") ===
+//     original.toLowerCase().split("").sort().join("")
+//   );
+// };
+
+// const isAnagram = (test,orginial)=>{
+//   let newtest = test.toLowerCase().split("").sort();
+//   let neworginial = orginial.toLowerCase().split("").sort();
+
+//   while(newtest === [])
+//   for (let i=0;i<newtest.length;i++) {
+//     for (let j=0;j<neworginial.length;j++) {
+//       if(newtest[i]===neworginial[j]){
+//         newtest.splice(i,1)
+//         neworginial.splice(j,1)
+//       }
+//     }
+//     console.log(newtest);
+//     if(newtest ===[]&&neworginial===[]){
+//       return "yes"
+//     }else{
+//       return "no"
+//     }
+//   }
+// }
+// console.log(isAnagram("foefet","tefefo"));
+
+const isAnagram = (test, orginial) => {
+  let newtest = test.toLowerCase().split("").sort().join("");
+  let neworginial = orginial.toLowerCase().split("").sort().join("");
+
+  return newtest === neworginial
+    ? `The words ${test} and ${orginial} are anagrams.`
+    : `${test} is not anagram of ${orginial}.`;
+};
+
+console.log(isAnagram("foefet", "toffee")); //The words foefet and toffee are anagrams.
+console.log(isAnagram("dklea", "lkkksl")); //dklea is not anagram of lkkksl
+
+
+
+///*****************************************************************
