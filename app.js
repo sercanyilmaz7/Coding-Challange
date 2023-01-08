@@ -600,10 +600,339 @@ filter_list([1, 2, "aasf", "1", "123", 123, -1]);
 
 //*****************************************************************
 
-function countConsonants(str) {}
+function countConsonants(str) {
+  let b1 = str.toLowerCase().split("");
+  let setB1 = new Set(b1);
+  let count = 0;
+  for (let x of setB1) {
+    if (x !== "a" && x !== "e" && x !== "i" && x !== "u" && x !== "o") {
+      count++;
+    }
+  }
+  return console.log(count);
+}
 
-let a1 = "add";
-let b1 = a1.split("");
-console.log(b1);
-let setB1 = new Set(b1);
-console.log(setB1);
+countConsonants("add");
+countConsonants("Dad");
+countConsonants("aeiou");
+countConsonants("abcdefghijklmnopqrstuvwxyz");
+countConsonants("Count my unique consonants!!");
+
+// let a1 = "add";
+// let b1 = a1.split("");
+// console.log(b1);
+// let setB1 = new Set(b1);
+// console.log(setB1);
+
+// // setB1.forEach(x => console.log(x))
+// let count =0
+// for(let x of setB1){
+// if(x !== "a" && x !== "e" && x !== "i"&& x !== "u"&& x !== "o"){
+//   count++
+// }
+// }
+
+//*****************************************************************
+
+//? Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
+
+//?If you want to know more: http://en.wikipedia.org/wiki/DNA
+
+//?In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". Your function receives one side of the DNA (string, except for Haskell); you need to return the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+
+//?More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
+
+//?Example: (input --> output)
+
+//?"ATTGC" --> "TAACG"
+//?"GTAT" --> "CATA"
+
+function DNAStrand(dna) {
+  let DnaSample = [];
+  let DNA = dna.split("");
+  for (x of DNA) {
+    if (x === "A") {
+      DnaSample.push("T");
+    } else if (x === "T") {
+      DnaSample.push("A");
+    } else if (x === "C") {
+      DnaSample.push("G");
+    } else if (x === "G") {
+      DnaSample.push("C");
+    }
+  }
+  return DnaSample.join("");
+}
+
+console.log(DNAStrand("ATTGC"));
+console.log(DNAStrand("gTAT"));
+
+// let cc = []
+// cc.push("A","B")
+// console.log(cc);
+// cc.join("")
+// console.log(cc.join(""));
+
+//*****************************************************************
+
+//?ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+
+//?If the function is passed a valid PIN string, return true, else return false.
+
+//?Examples (Input --> Output)
+//?"1234"   -->  true
+//?"12345"  -->  false
+//?"a234"   -->  false
+
+function validatePIN(pin) {
+  if (pin.length !== 4 && pin.length !== 6) {
+    return false;
+  }
+  for (let i = 0; i < pin.length; i++) {
+    if (pin[i] < "0" || pin[i] > "9") {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(validatePIN("1234"));
+console.log(validatePIN("12345"));
+console.log(validatePIN("a234"));
+
+//*****************************************************************
+
+//? You might know some pretty large perfect squares. But what about the NEXT one?
+
+//? Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+
+//? If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
+
+//? Examples:(Input --> Output)
+
+//? 121 --> 144
+//? 625 --> 676
+//? 114 --> -1 since 114 is not a perfect square
+
+function findNextSquare(sq) {
+  let a = Math.sqrt(sq);
+  if (!Number.isInteger(a)) {
+    return -1;
+  }
+  return (a + 1) ** 2;
+}
+
+console.log(findNextSquare(121));
+console.log(findNextSquare(625));
+console.log(findNextSquare(114));
+
+// let a = 121
+// let b = Number.isInteger(Math.sqrt(a))
+// let cc = Math.sqrt(a)
+// console.log(cc);
+// console.log(b);
+
+//*****************************************************************
+
+//?Return the number (count) of vowels in the given string.
+
+//?We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+//?The input string will only consist of lower case letters and/or spaces.
+
+function getCount(str) {
+  let arr = [];
+  for (x of str) {
+    if (x === "a" || x === "e" || x === "i" || x === "u" || x === "o") {
+      arr.push(x);
+    }
+  }
+  return arr.length;
+}
+console.log(getCount("abracadabra"));
+
+//*****************************************************************
+// You were camping with your friends far away from home, but when it's time to go back, you realize that your fuel is running out and the nearest pump is 50 miles away! You know that on average, your car runs on about 25 miles per gallon. There are 2 gallons left.
+
+// Considering these factors, write a function that tells you if it is possible to get to the pump or not.
+
+// Function should return true if it is possible and false if not.
+
+const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+  return mpg * fuelLeft >= distanceToPump ? true : false;
+};
+
+console.log(zeroFuel(50, 25, 2));
+console.log(zeroFuel(100, 50, 1));
+
+//*****************************************************************
+
+function areYouPlayingBanjo(name) {
+  return name[0] === "R" || name[0] === "r"
+    ? `${name} plays banjo`
+    : `${name} does not play banjo`;
+}
+
+console.log(areYouPlayingBanjo("Adam"));
+console.log(areYouPlayingBanjo("Paul"));
+console.log(areYouPlayingBanjo("Ringo"));
+
+//*****************************************************************
+
+function positiveSum(arr) {
+  let sum = 0;
+  for (x of arr) {
+    if (x > 0) {
+      sum += x;
+    }
+  }
+  return sum;
+}
+
+console.log(positiveSum([-1, 2, 3, 4, -5]));
+
+//*****************************************************************
+
+// Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+// For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+
+// Note: The function accepts an integer and returns an integer
+
+// MATHEMATICSFUNDAMENTALS
+
+function squareDigits(num) {
+  let numm = num.toString().split("");
+  const ns = numm.map((x) => x ** 2);
+  return Number(ns.join(""));
+}
+
+console.log(squareDigits(3212));
+console.log(squareDigits(0));
+
+//*****************************************************************
+
+function friend(friends) {
+  const myFriends = friends.filter((x) => x.length === 4);
+  return myFriends;
+}
+
+console.log(friend(["Ryan", "Kieran", "Jason", "Yous"]));
+
+//*****************************************************************
+function removeSmallest(numbers) {
+  let result =Math.min(...numbers);
+  let x = numbers.indexOf(result)
+  numbers.splice(x, 1);
+  return numbers;
+}
+
+console.log(removeSmallest([1, 2, 3, 4, 5]));
+console.log(removeSmallest([1, 2, 3, 4,1, 5]));
+
+
+// const numbers = [1,5, 9, 8, 2, 6, 4, 7, 3,2,1, 13];
+
+// const result = Math.min(...numbers);
+// console.log(result);
+// console.log(numbers.indexOf(result));
+
+//*****************************************************************
+
+
+function hero(bullets, dragons) {
+   return bullets >= dragons*2  ? true :false
+}
+
+
+//*****************************************************************
+
+// Our football team has finished the championship.
+
+// Our team's match results are recorded in a collection of strings. Each match is represented by a string in the format "x:y", where x is our team's score and y is our opponents score.
+
+// For example: ["3:1", "2:2", "0:1", ...]
+
+// Points are awarded for each match as follows:
+
+// if x > y: 3 points (win)
+// if x < y: 0 points (loss)
+// if x = y: 1 point (tie)
+// We need to write a function that takes this collection and returns the number of points our team (x) got in the championship by the rules given above.
+
+// Notes:
+
+// our team always plays 10 matches in the championship
+// 0 <= x <= 4
+// 0 <= y <= 4
+
+
+function points(games) {
+  let arr =[]
+  for(x in games){
+    if (games[x][0] > games[x][2]) {
+      arr.push(3);
+    } else if ((games[x][0] === games[x][2])) {
+      arr.push(1);
+    } else if (games[x][2] > games[x][0]) {
+      arr.push(0);
+    }
+  }
+  console.log(arr);
+  const arrSum = arr.reduce((total,y)=> total + y)
+  return arrSum
+}
+
+// console.log(
+//   points(["1:0", "2:0", "3:0", "4:0", "2:1", "3:1", "4:1", "3:2", "4:2", "4:3"])
+// );
+console.log(points([
+  "0:1",
+  "0:2",
+  "0:3",
+  "0:4",
+  "1:2",
+  "1:3",
+  "1:4",
+  "2:3",
+  "2:4",
+  "3:4",
+]));
+
+
+
+
+
+
+
+
+//*****************************************************************
+
+
+
+
+
+//*****************************************************************
+
+
+
+
+
+//*****************************************************************
+
+
+
+
+
+
+//*****************************************************************
+
+
+
+
+
+
+//*****************************************************************
+
+
+
+
