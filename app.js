@@ -536,6 +536,74 @@ const isAnagram = (test, orginial) => {
 console.log(isAnagram("foefet", "toffee")); //The words foefet and toffee are anagrams.
 console.log(isAnagram("dklea", "lkkksl")); //dklea is not anagram of lkkksl
 
-
-
 ///*****************************************************************
+function sum(numbers) {
+  return numbers.reduce((total, number) => total + number, 0);
+}
+
+console.log(sum([1, 5.2, 4, 0, -1]));
+console.log(sum([]));
+console.log(sum([-2.492]));
+//*****************************************************************
+// The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+
+// To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+
+// Input
+// Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+
+// Output
+// Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+
+// Example
+// input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+// output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+
+let c = [
+  [18, 20],
+  [45, 2],
+  [61, 12],
+  [37, 6],
+  [21, 21],
+  [78, 9],
+];
+
+function openOrSenior(data) {
+  let v = [];
+  for (let i = 0; i < data.length; i++) {
+    if (data[i][0] > 55 && data[i][1] > 7) {
+      v.push("senior");
+    } else {
+      v.push("open");
+    }
+  }
+  return v;
+}
+console.log(
+  openOrSenior([
+    [59, 12],
+    [55, -1],
+    [12, -2],
+    [12, 12],
+  ])
+);
+
+//*****************************************************************
+
+function filter_list(l) {
+  const k = l.filter((x) => typeof x !== "string" && x > 0);
+  console.log(k);
+}
+filter_list([1, 2, "a", "b"]);
+filter_list([1, "a", "b", 0, 15]);
+filter_list([1, 2, "aasf", "1", "123", 123, -1]);
+
+//*****************************************************************
+
+function countConsonants(str) {}
+
+let a1 = "add";
+let b1 = a1.split("");
+console.log(b1);
+let setB1 = new Set(b1);
+console.log(setB1);
