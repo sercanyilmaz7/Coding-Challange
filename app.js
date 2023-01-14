@@ -632,6 +632,18 @@ countConsonants("Count my unique consonants!!");
 // }
 // }
 
+//?Complete the function that counts the number of unique consonants in a string (made up of printable ascii characters).Consonants are letters used in English other than "a", "e", "i", "o", "u". We will count "y" as a consonant.Remember, your function needs to return the number of unique consonants - disregarding duplicates. For example, if the string passed into the function reads "add", the function should return 1 rather than 2, since "d" is a duplicate.Similarly, the function should also disregard duplicate consonants of differing cases. For example, "Dad" passed into the function should return 1 as "d" and "D" are duplicates.*/
+
+const countConsonantss = (str) => {
+  arr = str
+    .toLowerCase()
+    .split("")
+    .filter((letter) => letter.match(/[b-df-hj-np-tv-z]/));
+  //arr=new Set(arr)
+  return arr; //.size
+};
+console.log(countConsonantss("musatafa"));
+
 //*****************************************************************
 
 //? Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
@@ -820,15 +832,14 @@ console.log(friend(["Ryan", "Kieran", "Jason", "Yous"]));
 
 //*****************************************************************
 function removeSmallest(numbers) {
-  let result =Math.min(...numbers);
-  let x = numbers.indexOf(result)
+  let result = Math.min(...numbers);
+  let x = numbers.indexOf(result);
   numbers.splice(x, 1);
   return numbers;
 }
 
 console.log(removeSmallest([1, 2, 3, 4, 5]));
-console.log(removeSmallest([1, 2, 3, 4,1, 5]));
-
+console.log(removeSmallest([1, 2, 3, 4, 1, 5]));
 
 // const numbers = [1,5, 9, 8, 2, 6, 4, 7, 3,2,1, 13];
 
@@ -838,11 +849,9 @@ console.log(removeSmallest([1, 2, 3, 4,1, 5]));
 
 //*****************************************************************
 
-
 function hero(bullets, dragons) {
-   return bullets >= dragons*2  ? true :false
+  return bullets >= dragons * 2 ? true : false;
 }
-
 
 //*****************************************************************
 
@@ -865,43 +874,104 @@ function hero(bullets, dragons) {
 // 0 <= x <= 4
 // 0 <= y <= 4
 
-
 function points(games) {
-  let arr =[]
-  for(x in games){
+  let arr = [];
+  for (x in games) {
     if (games[x][0] > games[x][2]) {
       arr.push(3);
-    } else if ((games[x][0] === games[x][2])) {
+    } else if (games[x][0] === games[x][2]) {
       arr.push(1);
     } else if (games[x][2] > games[x][0]) {
       arr.push(0);
     }
   }
   console.log(arr);
-  const arrSum = arr.reduce((total,y)=> total + y)
-  return arrSum
+  const arrSum = arr.reduce((total, y) => total + y);
+  return arrSum;
 }
 
 // console.log(
 //   points(["1:0", "2:0", "3:0", "4:0", "2:1", "3:1", "4:1", "3:2", "4:2", "4:3"])
 // );
-console.log(points([
-  "0:1",
-  "0:2",
-  "0:3",
-  "0:4",
-  "1:2",
-  "1:3",
-  "1:4",
-  "2:3",
-  "2:4",
-  "3:4",
-]));
+console.log(
+  points(["0:1", "0:2", "0:3", "0:4", "1:2", "1:3", "1:4", "2:3", "2:4", "3:4"])
+);
+
+//*****************************************************************
+
+const objA = { a: 10, b: 20, c: 30 };
+const objB = { a: 3, c: 6, d: 3 };
+
+let cc = Object.entries(objA);
+console.log(cc);
+
+//*****************************************************************
+
+let ss = [
+  ["a", 10],
+  ["b", 20],
+  ["c", 30],
+];
+
+for (i in ss) {
+  console.log(i);
+}
+
+console.log(ss[0][1]);
+
+//  let result ={}
+//  result[a] = 2
+//  console.log(result);
+
+//*****************************************************************
 
 
+//*****************************************************************
+
+//? Your task is to write a function that takes two or more objects and returns a new object which combines all the input objects.
+//? All input object properties will have only numeric values. Objects are combined together so that the values of matching keys are added together.
+//? An example:
+//? const objA = { a: 10, b: 20, c: 30 }
+//? const objB = { a: 3, c: 6, d: 3 }
+//? combine(objA, objB) // Returns { a: 13, b: 20, c: 36, d: 3 }
+//? The combine function should be a good citizen, so should not mutate the input objects.
 
 
+//****************************1.yöntem*************************************
 
+// const combine = (...arr) => {
+//   let finalObj = {};
+//   for (let obj of arr) {
+//     for (let key in obj) {
+//       finalObj[key] ? (finalObj[key] += obj[key]) : (finalObj[key] = obj[key]);
+//     }
+//   }
+//   return finalObj;
+// };
+// const objA = { a: 10, b: 20, c: 30, e: 7 };
+// const objB = { a: 3, c: 6, d: 3, e: 8, g: 4 };
+// const objC = { a: 2, c: 6, d: 3, e: 1, h: 4 };
+// console.log(combine(objA, objB, objC)); //{a: 15, b: 20, c: 42, e: 16, d: 6, g: 4, h: 4}
+
+//******************************2.yöntem***********************************
+
+
+const combine = (...obj) => {
+  console.log(obj);
+  let result = {};
+  for (const i of obj) {
+    for (const j in i) {
+      if (Object.keys(result).includes(j)) {
+        result[j] += Object.entries(i)[Object.keys(i).indexOf(j)][1];
+      } else {
+        result[j] = Object.entries(i)[Object.keys(i).indexOf(j)][1];
+      }
+    }
+  }
+  return result;
+};
+
+console.log(combine({ a: 10, b: 20, c: 30 }, { a: 3, c: 6, d: 3 }));
 
 
 
@@ -909,30 +979,121 @@ console.log(points([
 
 
 
+("use strict");
 
+const obA = { a: 10, b: 20, c: 30 };
+const obB = { a: 3, c: 6, d: 3 };
+
+function combin(obA, obB) {
+  let combined = {};
+  for (const key in obA) {
+    console.log(key);
+    console.log(obA[key]);
+    combined[key] = obA[key];
+    console.log(combined);
+  }
+  for (const key in obB) {
+    if (combined[key]) {
+      combined[key] += obB[key];
+    } else {
+      combined[key] = obB[key];
+    }
+  }
+  return combined;
+}
+
+const combined = combin(obA, obB);
+console.log(combined); // output {a: 13, b: 20, c: 36, d: 3}
+
+const oo = {};
+const oA = { a: 10, b: 20, c: 30 };
+oo.a = oA.a;
+console.log(oo);
 
 //*****************************************************************
+const people = {
+  person1: {
+    name: "Can",
+    surname: "Canan",
+    dob: "1990",
+    job: "developer",
+    salary: "140000",
+    drivingLicense: true,
+  },
+  person2: {
+    name: "John",
+    surname: "Sweet",
+    dob: "1990",
+    job: "tester",
+    salary: "110000",
+    drivingLicense: false,
+  },
+  person3: {
+    name: "Steve",
+    surname: "Job",
+    dob: "2000",
+    job: "developer",
+    salary: "90000",
+    drivingLicense: true,
+  },
+};
 
+console.log(Object.keys(people));
+console.log(Object.values(people));
+console.log(Object.entries(people));
 
+for (let key of Object.keys(people)) {
+  console.log(key);
+}
 
+for (let v of Object.values(people)) {
+  console.log(v);
+}
 
+for (let [k, v] of Object.entries(people)) {
+  console.log(k, v);
+}
+
+const A = { a: 10, b: 20, c: 30 };
+const B = { a: 3, c: 6, d: 3 };
+
+console.log(Object.keys(A));
+console.log(Object.values(A));
+console.log(Object.entries(A));
+console.log(Object.keys(B));
+console.log(Object.values(B));
+console.log(Object.entries(B));
+
+function yap(A, B) {
+  let son ={}
+  let a = Object.keys(A);
+  let b = Object.values(A);
+  let c = Object.keys(B);
+  let d = Object.values(B);
+for(let i of a){
+  for (let j of b){
+    if(i===j){
+      son[i]+=b[j]
+    }
+
+  }
+}
+}
+yap(A, B);
+//*****************************************************************
+const combinee = (...arr) => {
+  console.log(arr);
+};
+const objjA = { a: 10, b: 20, c: 30 };
+const objjB = { a: 3, c: 6, d: 3 };
+combinee(objjA, objjB);
+
+console.log(objjA.a);
+console.log(objjA["a"]);
+
+for (let i in objjA) {
+  console.log(i); //? a,b,c
+  console.log(objjA[i]); //? 10,20,30
+}
 
 //*****************************************************************
-
-
-
-
-
-
-//*****************************************************************
-
-
-
-
-
-
-//*****************************************************************
-
-
-
-
